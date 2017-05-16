@@ -7,10 +7,3 @@ end
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'
-
-echo "# oreoforms-rails" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:eduardoaraujocunhaa/oreoforms-rails.git
-git push -u origin master
