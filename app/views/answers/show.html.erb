@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @answer.user %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @answer.type %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @answer.text %>
+</p>
+
+<p>
+  <strong>Numberofoptions:</strong>
+  <%= @answer.numberofoptions %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @answer.form %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

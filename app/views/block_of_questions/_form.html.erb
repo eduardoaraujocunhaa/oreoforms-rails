@@ -1,0 +1,32 @@
+<%= form_with(model: block_of_question, local: true) do |form| %>
+  <% if block_of_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(block_of_question.errors.count, "error") %> prohibited this block_of_question from being saved:</h2>
+
+      <ul>
+      <% block_of_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text, id: :block_of_question_text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option %>
+    <%= form.number_field :option, id: :block_of_question_option %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question_id %>
+    <%= form.text_field :question_id, id: :block_of_question_question_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

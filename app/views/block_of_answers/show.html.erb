@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @block_of_answer.text %>
+</p>
+
+<p>
+  <strong>Numberofoption:</strong>
+  <%= @block_of_answer.numberofoption %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @block_of_answer.answer %>
+</p>
+
+<%= link_to 'Edit', edit_block_of_answer_path(@block_of_answer) %> |
+<%= link_to 'Back', block_of_answers_path %>

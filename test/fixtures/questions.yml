@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Tipo: MyString
+  form: one
+
+two:
+  Tipo: MyString
+  form: two
