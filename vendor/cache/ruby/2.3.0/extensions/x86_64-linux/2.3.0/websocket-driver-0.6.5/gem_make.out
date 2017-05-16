@@ -1,0 +1,15 @@
+current directory: /home/eduardo/Learn/Rails/oreoforms/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/home/eduardo/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170516-23355-1qf3fvs.rb extconf.rb
+creating Makefile
+
+current directory: /home/eduardo/Learn/Rails/oreoforms/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/eduardo/Learn/Rails/oreoforms/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/eduardo/Learn/Rails/oreoforms/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20170516-23355-38f3nz

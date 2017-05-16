@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   resources :answers
   resources :block_of_questions
   resources :questions
-  devise_for :users
+  devise_for :users, :controllers => {
+    :omniauth_callbacks => "callbacks"
+  }
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'questionaries#index'
+      root :to => 'home#index'
     end
     unauthenticated :user do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
