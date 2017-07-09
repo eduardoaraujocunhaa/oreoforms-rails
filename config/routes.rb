@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :questionaries
   resources :block_of_answers
   resources :answers
   resources :block_of_questions
+  resources :kind_of_questions
   resources :questions
+  resources :questionaries
   devise_for :users, :controllers => {
     :omniauth_callbacks => "callbacks"
   }

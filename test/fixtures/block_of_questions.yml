@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  option: 1
-  question: one
+  option: MyString
 
 two:
-  text: MyString
-  option: 1
-  question: two
+  option: MyString

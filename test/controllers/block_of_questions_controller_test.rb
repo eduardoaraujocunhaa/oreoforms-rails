@@ -17,7 +17,7 @@ class BlockOfQuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create block_of_question" do
     assert_difference('BlockOfQuestion.count') do
-      post block_of_questions_url, params: { block_of_question: { option: @block_of_question.option, question_id: @block_of_question.question_id, text: @block_of_question.text } }
+      post block_of_questions_url, params: { block_of_question: { option: @block_of_question.option } }
     end
 
     assert_redirected_to block_of_question_url(BlockOfQuestion.last)
@@ -34,7 +34,7 @@ class BlockOfQuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update block_of_question" do
-    patch block_of_question_url(@block_of_question), params: { block_of_question: { option: @block_of_question.option, question_id: @block_of_question.question_id, text: @block_of_question.text } }
+    patch block_of_question_url(@block_of_question), params: { block_of_question: { option: @block_of_question.option } }
     assert_redirected_to block_of_question_url(@block_of_question)
   end
 

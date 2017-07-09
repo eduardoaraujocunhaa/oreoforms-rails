@@ -69,6 +69,6 @@ class BlockOfQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_of_question_params
-      params.require(:block_of_question).permit(:text, :option, :question_id)
+      params.require(:block_of_question).permit(:option)
     end
 end

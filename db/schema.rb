@@ -10,55 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516204420) do
+ActiveRecord::Schema.define(version: 20170709155434) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.bigint "question_id"
-    t.string "type"
-    t.string "text"
-    t.integer "numberofanswers"
+    t.integer "id_interviewed"
+    t.integer "n_options"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "block_of_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "text"
-    t.integer "numberofanswer"
-    t.bigint "answer_id"
+    t.integer "n_option"
+    t.string "text_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_block_of_answers_on_answer_id"
   end
 
   create_table "block_of_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "text"
-    t.integer "numberofoption"
-    t.bigint "question_id"
+    t.string "option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_block_of_questions_on_question_id"
+  end
+
+  create_table "kind_of_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "kind_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questionaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "url"
     t.string "name"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_questionaries_on_user_id"
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
-    t.integer "numberofoptions"
-    t.string "title"
-    t.bigint "question_id"
+    t.string "enunciate"
+    t.integer "n_options"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_questions_on_question_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,10 +73,4 @@ ActiveRecord::Schema.define(version: 20170516204420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
-  add_foreign_key "block_of_answers", "answers"
-  add_foreign_key "block_of_questions", "questions"
-  add_foreign_key "questionaries", "users"
-  add_foreign_key "questions", "questions"
 end

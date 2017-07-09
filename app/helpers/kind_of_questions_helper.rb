@@ -1,0 +1,2 @@
+module KindOfQuestionsHelper
+end

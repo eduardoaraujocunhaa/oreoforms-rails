@@ -17,7 +17,7 @@ class BlockOfAnswersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create block_of_answer" do
     assert_difference('BlockOfAnswer.count') do
-      post block_of_answers_url, params: { block_of_answer: { answer_id: @block_of_answer.answer_id, numberofoption: @block_of_answer.numberofoption, text: @block_of_answer.text } }
+      post block_of_answers_url, params: { block_of_answer: { n_option: @block_of_answer.n_option, text_answer: @block_of_answer.text_answer } }
     end
 
     assert_redirected_to block_of_answer_url(BlockOfAnswer.last)
@@ -34,7 +34,7 @@ class BlockOfAnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update block_of_answer" do
-    patch block_of_answer_url(@block_of_answer), params: { block_of_answer: { answer_id: @block_of_answer.answer_id, numberofoption: @block_of_answer.numberofoption, text: @block_of_answer.text } }
+    patch block_of_answer_url(@block_of_answer), params: { block_of_answer: { n_option: @block_of_answer.n_option, text_answer: @block_of_answer.text_answer } }
     assert_redirected_to block_of_answer_url(@block_of_answer)
   end
 

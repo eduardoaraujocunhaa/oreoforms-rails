@@ -17,7 +17,7 @@ class QuestionariesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create questionary" do
     assert_difference('Questionary.count') do
-      post questionaries_url, params: { questionary: { nome: @questionary.nome, url: @questionary.url, user_id: @questionary.user_id } }
+      post questionaries_url, params: { questionary: { name: @questionary.name, url: @questionary.url } }
     end
 
     assert_redirected_to questionary_url(Questionary.last)
@@ -34,7 +34,7 @@ class QuestionariesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update questionary" do
-    patch questionary_url(@questionary), params: { questionary: { nome: @questionary.nome, url: @questionary.url, user_id: @questionary.user_id } }
+    patch questionary_url(@questionary), params: { questionary: { name: @questionary.name, url: @questionary.url } }
     assert_redirected_to questionary_url(@questionary)
   end
 

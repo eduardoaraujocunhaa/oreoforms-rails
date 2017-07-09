@@ -69,6 +69,6 @@ class QuestionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def questionary_params
-      params.require(:questionary).permit(:url, :nome, :user_id)
+      params.require(:questionary).permit(:url, :name)
     end
 end

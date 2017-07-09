@@ -1,15 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  type: 
-  text: MyString
-  numberofoptions: 1
-  form: one
+  id_interviewed: 
+  n_options: 
 
 two:
-  user: two
-  type: 
-  text: MyString
-  numberofoptions: 1
-  form: two
+  id_interviewed: 
+  n_options: 

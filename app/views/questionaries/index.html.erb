@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th>Url</th>
-      <th>Nome</th>
-      <th>User</th>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +15,7 @@
     <% @questionaries.each do |questionary| %>
       <tr>
         <td><%= questionary.url %></td>
-        <td><%= questionary.nome %></td>
-        <td><%= questionary.user %></td>
+        <td><%= questionary.name %></td>
         <td><%= link_to 'Show', questionary %></td>
         <td><%= link_to 'Edit', edit_questionary_path(questionary) %></td>
         <td><%= link_to 'Destroy', questionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
