@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :question_id %>
+    <%= form.collection_select(:question_id, @questions, :id, :enunciate) %>
+  </div>
+
+  <div class="field">
     <%= form.label :option %>
     <%= form.text_field :option, id: :block_of_question_option %>
   </div>

@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Questionary:</strong>
+  <%= @block_of_question.question.questionary.name %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @block_of_question.question.enunciate %>
+</p>
+
+<p>
   <strong>Option:</strong>
   <%= @block_of_question.option %>
 </p>

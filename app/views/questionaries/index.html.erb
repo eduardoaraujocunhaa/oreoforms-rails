@@ -7,6 +7,7 @@
     <tr>
       <th>Url</th>
       <th>Name</th>
+      <th>User Id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= questionary.url %></td>
         <td><%= questionary.name %></td>
+        <td><%= questionary.user_id %></td>
         <td><%= link_to 'Show', questionary %></td>
         <td><%= link_to 'Edit', edit_questionary_path(questionary) %></td>
         <td><%= link_to 'Destroy', questionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>

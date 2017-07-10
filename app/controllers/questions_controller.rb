@@ -15,6 +15,8 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @koq = KindOfQuestion.all
+    @user_forms = Questionary.where(user_id: current_user.id)
   end
 
   # GET /questions/1/edit
@@ -24,6 +26,8 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    @koq = KindOfQuestion.all
+    @user_forms = Questionary.where(user_id: current_user.id)
     @question = Question.new(question_params)
 
     respond_to do |format|
@@ -69,6 +73,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:enunciate, :n_options)
+      params.require(:question).permit(:enunciate, :n_options, :questionary_id, :kind_of_question_id)
     end
 end

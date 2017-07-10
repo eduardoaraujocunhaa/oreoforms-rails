@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Questionary:</strong>
+  <%= @question.questionary.name %>
+</p>
+
+<p>
+  <strong>Kind Of Question:</strong>
+  <%= @question.kind_of_question.kind_name %>
+</p>
+
+<p>
   <strong>Enunciate:</strong>
   <%= @question.enunciate %>
 </p>
@@ -9,6 +19,7 @@
   <strong>N options:</strong>
   <%= @question.n_options %>
 </p>
+
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

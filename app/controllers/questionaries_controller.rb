@@ -25,7 +25,7 @@ class QuestionariesController < ApplicationController
   # POST /questionaries.json
   def create
     @questionary = Questionary.new(questionary_params)
-
+    @questionary.user_id = current_user.id
     respond_to do |format|
       if @questionary.save
         format.html { redirect_to @questionary, notice: 'Questionary was successfully created.' }
@@ -69,6 +69,6 @@ class QuestionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def questionary_params
-      params.require(:questionary).permit(:url, :name)
+      params.require(:questionary).permit(:url, :name, :user_id)
     end
 end

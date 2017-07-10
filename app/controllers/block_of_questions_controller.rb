@@ -15,6 +15,8 @@ class BlockOfQuestionsController < ApplicationController
   # GET /block_of_questions/new
   def new
     @block_of_question = BlockOfQuestion.new
+    questionary = Questionary.where(user_id: current_user.id)
+    @questions = Question.where(questionary_id: questionary)
   end
 
   # GET /block_of_questions/1/edit
@@ -25,7 +27,8 @@ class BlockOfQuestionsController < ApplicationController
   # POST /block_of_questions.json
   def create
     @block_of_question = BlockOfQuestion.new(block_of_question_params)
-
+    questionary = Questionary.where(user_id: current_user.id)
+    @questions = Question.where(questionary_id: questionary)
     respond_to do |format|
       if @block_of_question.save
         format.html { redirect_to @block_of_question, notice: 'Block of question was successfully created.' }
@@ -69,6 +72,6 @@ class BlockOfQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_of_question_params
-      params.require(:block_of_question).permit(:option)
+      params.require(:block_of_question).permit(:option, :question_id)
     end
 end
