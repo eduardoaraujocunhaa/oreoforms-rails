@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :omniauth_callbacks => "callbacks"
   }
-  get '/show_form(/:uuid)', to: 'interviews#show', as: :show_form
+  get '/apply_form(/:url)', to: 'interviews#apply', as: :apply_form
 
   devise_scope :user do
     authenticated :user do
