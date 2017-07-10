@@ -6,5 +6,6 @@ class CreateQuestionaries < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :questionaries, :url, unique: true
   end
 end
