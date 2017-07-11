@@ -4,6 +4,7 @@ class InterviewsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def apply
+    @answer = Answer.new
     @questions = Question.where(id: @questionary.question_ids)
   end
 
