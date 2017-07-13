@@ -1,30 +1,33 @@
 <%= form_for @answer do |f| %>
-  BOA:
-  <ul>
-    <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+  <% @questions.each do |question| %>
+    <%= question.enunciate %>
+    <br>
+    BOA:
+    <ul>
+      <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+        <li>
+          <%= block_of_answers_form.label :text_answer %>
+          <%= block_of_answers_form.text_field :text_answer %>
+        </li>
+        <li>
+          <%= block_of_answers_form.label :n_option %>
+          <%= block_of_answers_form.text_field :n_option %>
+        </li>
+        <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+      <% end %>
+    </ul>
+    ANSWER:
+    <%= f.hidden_field :question_id, id: :answer_question_id, value: @questions.first.id %>
+    <%= f.hidden_field :id_interviewed, id: :answer_id_interviewed, value: current_user.id %>
+    <ul>
       <li>
-        <%= block_of_answers_form.label :text_answer %>
-        <%= block_of_answers_form.text_field :text_answer %>
+        <div class="field">
+          <%= f.label :n_options %>
+          <%= f.text_field :n_options, id: :answer_n_options %>
+        </div>
       </li>
-      <li>
-        <%= block_of_answers_form.label :n_option %>
-        <%= block_of_answers_form.text_field :n_option %>
-      </li>
-      <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
-    <% end %>
-  </ul>
-  ANSWER:
-  <%= f.hidden_field :question_id, id: :answer_question_id, value: @questions.first.id %>
-  <%= f.hidden_field :id_interviewed, id: :answer_id_interviewed, value: current_user.id %>
-  <ul>
-    <li>
-      <div class="field">
-        <%= f.label :n_options %>
-        <%= f.text_field :n_options, id: :answer_n_options %>
-      </div>
-    </li>
-  </ul>
-
+    </ul>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
