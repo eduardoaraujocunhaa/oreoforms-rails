@@ -18,20 +18,45 @@
             <% end %>
           </ul>
         <% when "Múltipla Escolha" %>
-            <ul>
-              <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
-                <li>
-                  <%= block_of_answers_form.label question.enunciate %>
-                  <%= block_of_answers_form.collection_check_boxes :n_option, question.block_of_questions, :id, :option do |b| %>
-                      <%= b.check_box %>
-                      <%= b.label %>
-                  <% end %>
-<!--                   <p><%= block_of_answers_form.text_field :text_answer %></p> -->
-                </li>
-                <!-- <p><%= block_of_answers_form.hidden_field :n_option, value: 0 %></p> -->
-                <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
-              <% end %>
-            </ul>
+          <ul>
+            <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+              <li>
+                <%= block_of_answers_form.label question.enunciate %>
+                <%= block_of_answers_form.collection_check_boxes :n_option, question.block_of_questions, :id, :option do |b| %>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                <% end %>
+              </li>
+              <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+            <% end %>
+          </ul>
+        <% when "Escolha Um" %>
+          <ul>
+            <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+              <li>
+                <%= block_of_answers_form.label question.enunciate %>
+                <% question.block_of_questions.each do |b| %>
+                  <%= block_of_answers_form.radio_button :n_option, b.id %>
+                  <%= block_of_answers_form.label :n_option, b.option %>
+                <% end %>
+              </li>
+              <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+            <% end %>
+          </ul>
+        <% when "Ranking", "Numérica" %>
+          <ul>
+            <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+              <li>
+                <%= block_of_answers_form.label question.enunciate %>
+                <% question.block_of_questions.each do |b| %>
+                  <%= block_of_answers_form.text_field :text_answer %>
+                  <%= block_of_answers_form.label b.option %>
+                  <%= block_of_answers_form.hidden_field :n_option, value: b.id %>
+                <% end %>
+              </li>
+              <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+            <% end %>
+          </ul>
       <% end %>
     
     <% end %>
@@ -42,5 +67,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<!-- question_id -->

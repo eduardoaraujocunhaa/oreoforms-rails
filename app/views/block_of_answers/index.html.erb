@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Question</th>
       <th>N option</th>
       <th>Text answer</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @block_of_answers.each do |block_of_answer| %>
       <tr>
+        <td><%= block_of_answer.answer.question_id %></td>
         <td><%= block_of_answer.n_option %></td>
         <td><%= block_of_answer.text_answer %></td>
         <td><%= link_to 'Show', block_of_answer %></td>
