@@ -1,35 +1,45 @@
-<%= form_for @answer do |f| %>
+<%= form_for @answer do |form|%>
   <% @questions.each do |question| %>
-    <%= question.enunciate %>
-    <br>
-    BOA:
-    <ul>
-      <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
-        <li>
-          <%= block_of_answers_form.label :text_answer %>
-          <%= block_of_answers_form.text_field :text_answer %>
-        </li>
-        <li>
-          <%= block_of_answers_form.label :n_option %>
-          <%= block_of_answers_form.text_field :n_option %>
-        </li>
-        <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+    <%= fields_for "answers[]", Answer.new do |f| %>
+      <%= f.hidden_field :question_id, id: :answer_question_id, value: question.id %>
+      <%= f.hidden_field :id_interviewed, id: :answer_id_interviewed, value: current_user.id %>
+      <%= f.hidden_field :n_options, id: :answer_n_options, value: question.block_of_questions.count %>
+      <br>
+      <% case question.kind_of_question.kind_name %>
+        <% when "Simples" %>
+          <ul>
+            <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+              <li>
+                <%= block_of_answers_form.label question.enunciate %>
+                <%= block_of_answers_form.text_field :text_answer %>
+              </li>
+              <%= block_of_answers_form.hidden_field :n_option, value: 0 %>
+              <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+            <% end %>
+          </ul>
+        <% when "Múltipla Escolha" %>
+            <ul>
+              <%= f.fields_for :block_of_answers, BlockOfAnswer.new do |block_of_answers_form| %>
+                <li>
+                  <%= block_of_answers_form.label question.enunciate %>
+                  <%= block_of_answers_form.collection_check_boxes :n_option, question.block_of_questions, :id, :option do |b| %>
+                      <%= b.check_box %>
+                      <%= b.label %>
+                  <% end %>
+<!--                   <p><%= block_of_answers_form.text_field :text_answer %></p> -->
+                </li>
+                <!-- <p><%= block_of_answers_form.hidden_field :n_option, value: 0 %></p> -->
+                <%= block_of_answers_form.hidden_field :answer_id, value: @answer.id %>
+              <% end %>
+            </ul>
       <% end %>
-    </ul>
-    ANSWER:
-    <%= f.hidden_field :question_id, id: :answer_question_id, value: @questions.first.id %>
-    <%= f.hidden_field :id_interviewed, id: :answer_id_interviewed, value: current_user.id %>
-    <ul>
-      <li>
-        <div class="field">
-          <%= f.label :n_options %>
-          <%= f.text_field :n_options, id: :answer_n_options %>
-        </div>
-      </li>
-    </ul>
+    
+    <% end %>
   <% end %>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>
 

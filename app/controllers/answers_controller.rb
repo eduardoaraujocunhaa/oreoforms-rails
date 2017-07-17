@@ -24,16 +24,23 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
+
+    answers = params[:answers]
+
+    answers.each do |answer|
+      params[:answers] = answer
+      @answer = Answer.new(answer_params)
+      @answer.save
+    end
 
     respond_to do |format|
-      if @answer.save
+      # if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+      # else
+        # format.html { render :new }
+        # format.json { render json: @answer.errors, status: :unprocessable_entity }
+      # end
     end
   end
 
@@ -69,7 +76,9 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      # params.require(:answer).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: [:id, :n_option, :text_answer, :answer_id])
-      params.require(:answer).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
+      # params.require(:answer).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
+      # params.permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
+      params.require(:answers).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
+
     end
 end

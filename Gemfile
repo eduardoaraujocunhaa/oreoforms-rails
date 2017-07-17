@@ -35,6 +35,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem "rails-erd"
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'seed_dump'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

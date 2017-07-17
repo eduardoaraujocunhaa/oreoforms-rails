@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "callbacks"
   }
   get '/apply_form(/:url)', to: 'interviews#apply', as: :apply_form
+  post '/apply_form(/:url)', to: 'interviews#post_apply', as: :post_form
 
   devise_scope :user do
     authenticated :user do

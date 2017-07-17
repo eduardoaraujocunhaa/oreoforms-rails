@@ -4,8 +4,9 @@ class InterviewsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def apply
-    @answer = Answer.new
     @questions = Question.where(id: @questionary.question_ids)
+    @block_of_questions = BlockOfQuestion.where(question_id: @questionary.question_ids)
+    @answer = Answer.new
   end
 
   private
