@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Questionary</th>
+      <th>Id Option</th>
       <th>Question</th>
       <th>Option</th>
       <th colspan="3"></th>
@@ -16,6 +17,7 @@
     <% @block_of_questions.each do |block_of_question| %>
       <tr>
         <td><%= block_of_question.question.questionary.name %></td>
+        <th><%= block_of_question.id  %></th>
         <td><%= block_of_question.question.enunciate %></td>
         <td><%= block_of_question.option %></td>
         <td><%= link_to 'Show', block_of_question %></td>

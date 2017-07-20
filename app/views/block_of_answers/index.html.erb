@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Question</th>
+      <th>Kind of Question</th>
       <th>Answer</th>
       <th>N option</th>
       <th>Text answer</th>
@@ -17,6 +18,7 @@
     <% @block_of_answers.each do |block_of_answer| %>
       <tr>
         <td><%= block_of_answer.answer.question_id %></td>
+        <td><%= block_of_answer.answer.kind_of_question_id %></td>
         <td><%= block_of_answer.answer_id %></td>
         <td><%= block_of_answer.n_option %></td>
         <td><%= block_of_answer.text_answer %></td>

@@ -30,12 +30,16 @@ class AnswersController < ApplicationController
     answers.each do |answer|
       params[:answers] = answer
       @answer = Answer.new(answer_params)
-      @answer.save
+      if @answer.kind_of_question_id == 2
+        
+      else
+        @answer.save
+      end
     end
 
     respond_to do |format|
       # if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
       # else
         # format.html { render :new }
@@ -76,9 +80,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      # params.require(:answer).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
-      # params.permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
-      params.require(:answers).permit(:id_interviewed, :n_options, :question_id, {block_of_answers_attributes: {}})
-
+      params.require(:answers).permit(:kind_of_question_id, :id_interviewed, :n_options, :question_id, {block_of_answers_attributes: {}})
     end
 end

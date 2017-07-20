@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709161838) do
+ActiveRecord::Schema.define(version: 20170720141836) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "id_interviewed"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20170709161838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "question_id"
+    t.bigint "kind_of_question_id"
+    t.index ["kind_of_question_id"], name: "index_answers_on_kind_of_question_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170709161838) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "kind_of_questions"
   add_foreign_key "answers", "questions"
   add_foreign_key "block_of_answers", "answers"
   add_foreign_key "block_of_questions", "questions"
