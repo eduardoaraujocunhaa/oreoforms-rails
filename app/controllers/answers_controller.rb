@@ -78,7 +78,7 @@ class AnswersController < ApplicationController
     def answer_params
       # params.require(:answer).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
       # params.permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
-      params.require(:answers).permit(:id_interviewed, :n_options, :question_id, block_of_answers_attributes: {})
+      params.require(:answers).permit(:id_interviewed, :n_options, :question_id, {block_of_answers_attributes: {}})
 
     end
 end

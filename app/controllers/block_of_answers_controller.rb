@@ -5,7 +5,6 @@ class BlockOfAnswersController < ApplicationController
   # GET /block_of_answers.json
   def index
     @block_of_answers = BlockOfAnswer.all
-    @questions = Question.all
   end
 
   # GET /block_of_answers/1

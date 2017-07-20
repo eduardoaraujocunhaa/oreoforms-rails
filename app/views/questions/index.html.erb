@@ -7,6 +7,7 @@
     <tr>
       <th>Questionary</th>
       <th>Kind Of Question</th>
+      <th>Id Question</th>
       <th>Enunciate</th>
       <th>N options</th>
       <th colspan="3"></th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= question.questionary.name %></td>
         <td><%= question.kind_of_question.kind_name %></td>
+        <td><%= question.id %></td>
         <td><%= question.enunciate %></td>
         <td><%= question.n_options %></td>
         <td><%= link_to 'Show', question %></td>
