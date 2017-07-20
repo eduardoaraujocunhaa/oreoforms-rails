@@ -30,10 +30,18 @@ class AnswersController < ApplicationController
     answers.each do |answer|
       params[:answers] = answer
       @answer = Answer.new(answer_params)
+      @answer.save
       if @answer.kind_of_question_id == 2
-        
-      else
-        @answer.save
+        @block_of_answer = BlockOfAnswer.find_by(answer_id: @answer.id)
+        @block_of_answer.delete
+        aux = answer[:block_of_answers_attributes]['0'][:n_option]
+        puts aux
+        aux.delete('')
+        if !aux.empty?
+          aux.each do |aux_ans|
+            BlockOfAnswer.create(:answer_id => @answer.id, :n_option => aux_ans)
+          end
+        end
       end
     end
 
